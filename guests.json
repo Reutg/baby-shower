@@ -1,0 +1,27 @@
+[
+    {"name": "Dani",
+    "rsvp": "true",
+    "notes": ["vegeterian","comming late"]
+    },
+    {
+    "name": "jeorge",
+    "rsvp": "flase",
+    "notes": ["vegan"]
+    },
+    {"name": "Sam",
+    "rsvp": "true",
+    "notes": ["lactose intolerance","with a child"]
+    },
+    {"name": "Linda",
+    "rsvp": "true",
+    "notes": []
+    },
+    {"name": "Linnet",
+    "rsvp": "true",
+    "notes": ["wheel chair"]
+    },
+    {"name": "Sarah",
+    "rsvp": "false",
+    "notes": []
+    }
+]
