@@ -1,6 +1,12 @@
 class Manager {
-    constructor(baby) {
-        this.baby = baby
+    constructor() {
+        this.baby
+        this.babiesList = []
+    }
+
+    async getNameSuggestions(firstLetter,popularity,gender){
+        let babies = await $.get(`/babyNames/${firstLetter}/${popularity}/${gender}`)
+        this.babiesList.push(babies)
     }
 
     async getBabyFromDB() {
@@ -8,9 +14,9 @@ class Manager {
         this.baby = baby
     }
 
-    async saveBaby(){
-        let baby = await $.post('/baby')
-        this.baby = baby
+    async saveBaby(inputName){
+        await $.post('/baby', {name: inputName})
+        this.baby = inputName
     }
 
     async removeBaby(name){
