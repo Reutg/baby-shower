@@ -12,7 +12,7 @@
 <!-- baby name  -->
 <div class="babyName">
     <input type="text" placeholder="baby name" id="inputName">
-    <button onclick="saveName()" id="buttonSave">Save Name</button>
+    <button id="buttonSave">Save Name</button>
     <div id="savedName-container"></div>
     <p>Gender:</p><input type="text" placeholder="Male/Female" id="inputGender">
     <p>Popular:</p><input type="text" placeholder="most popular/least popular" id="inputPopular">
@@ -29,9 +29,9 @@
     </div>
 </script>
 <script id="babyList-template" type="text/x-handlebars-template">
-    {{#each BabyNameList}}
+    {{#each babyNames}}
     <div class="nameList">
-      <div id="babyNameList">{{babyNameList}}</div>
+      <div id="babyNameList">{{name}}</div>
     </div>
     {{/each}}     
 </script>

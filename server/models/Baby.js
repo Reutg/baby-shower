@@ -2,9 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const babySchema = new Schema({
-    name: String,
-    gender: String,
-    rank: Boolean,
+    name: String
 })
 const Baby = mongoose.model("Baby", babySchema)
 
