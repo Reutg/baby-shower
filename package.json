@@ -12,9 +12,11 @@
     "@fortawesome/fontawesome-free": "^5.8.1",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "font-awesome": "^4.7.0",
     "handlebars": "^4.1.2",
     "jquery": "^3.4.0",
     "moment": "^2.24.0",
+    "moments": "0.0.2",
     "mongoose": "^5.5.1",
     "request": "^2.88.0"
   }

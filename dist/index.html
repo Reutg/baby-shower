@@ -9,6 +9,33 @@
     <link rel="stylesheet" type="text/css" media="screen" href="./@fortawesome/fontawesome-free/css/all.css">
 </head>
 <body>
+<!-- baby name  -->
+<div class="babyName">
+    <input type="text" placeholder="baby name" id="inputName">
+    <button onclick="saveName()" id="buttonSave">Save Name</button>
+    <div id="savedName-container"></div>
+    <p>Gender:</p><input type="text" placeholder="Male/Female" id="inputGender">
+    <p>Popular:</p><input type="text" placeholder="most popular/least popular" id="inputPopular">
+    <p>First Latter:</p><input type="text" placeholder="First latter" id="inputFL">
+    <button onclick="searchName()" id="buttonSearch">Search Name</button>
+    <div id="babyList-container"></div>
+</div>
+
+<!-- handlebars -->
+  <!-- baby name  -->
+<script id="babySelected-template" type="text/x-handlebars-template">
+    <div class="nameSelected">
+      <div id="nameSelected">name: {{name}}</div>
+    </div>
+</script>
+<script id="babyList-template" type="text/x-handlebars-template">
+    {{#each BabyNameList}}
+    <div class="nameList">
+      <div id="babyNameList">{{babyNameList}}</div>
+    </div>
+    {{/each}}     
+</script>
+
 
     <script src="./handlebars/dist/handlebars.js"></script>
     <script src="./jquery/dist/jquery.js"></script>
