@@ -18,7 +18,8 @@ const searchName = async function(){
     let inputPopular = $("#inputPopular").val()
     let inputFL = $("#inputFL").val()
     await manager.getNameSuggestions(inputFL,inputPopular,inputGender)
-    renderer.render(manager.data)
+    console.log(manager.babiesList)
+    renderer.renderBabyList(manager.babiesList)
 }
 
 loadPage()

@@ -7,15 +7,14 @@ renderSelectedBaby(babyName){
     $('#savedName-container').empty().append(newHTML)
 }
 
-renderBabyList(babynames){
+renderBabyList(babyNames){
     let source = $('#babyList-template').html()
     let template = Handlebars.compile(source)
-    let newHTML = template({babynames})
+    let newHTML = template({babyNames})
     $('#babyList-container').empty().append(newHTML)
 }
 
 render(name){
-    this.renderBabyList(name)
     this.renderSelectedBaby(name)
 }
 

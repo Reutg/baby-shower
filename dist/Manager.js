@@ -4,9 +4,19 @@ class Manager {
         this.babiesList = []
     }
 
-    async getNameSuggestions(firstLetter,popularity,gender){
+    async getNameSuggestions(firstLetter, popularity, gender) {
         let babies = await $.get(`/babyNames/${firstLetter}/${popularity}/${gender}`)
-        this.babiesList.push(babies)
+        console.log(babies)
+
+        let babyListNames = babies[0].map(b => { return { name: b.name } })
+        console.log(babyListNames)
+        // for (let b of babies){
+        //     this.babiesList.push(b.name)
+
+        // }
+        // console.log(this.babiesList)
+        this.babiesList = babyListNames
+
     }
 
     async getBabyFromDB() {
@@ -14,12 +24,12 @@ class Manager {
         this.baby = baby
     }
 
-    async saveBaby(inputName){
-        await $.post('/baby', {name: inputName})
+    async saveBaby(inputName) {
+        await $.post('/baby', { name: inputName })
         this.baby = inputName
     }
 
-    async removeBaby(name){
+    async removeBaby(name) {
         await $.ajax({
             methode: "DELETE",
             url: `/baby/${name}`
