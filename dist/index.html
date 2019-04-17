@@ -21,6 +21,13 @@
     <div id="babyList-container"></div>
 </div>
 
+<!-- guests list  -->
+<div class="guests-list">
+  <input type="text" placeholder="Enter guest name" id="inputGuest">
+  <button id="addGuest">Add</button>
+  <div id="guests-container"></div>
+</div>
+
 <!-- handlebars -->
   <!-- baby name  -->
 <script id="babySelected-template" type="text/x-handlebars-template">
@@ -34,6 +41,25 @@
       <div id="babyNameList">{{name}}</div>
     </div>
     {{/each}}     
+</script>
+
+<!-- guests  -->
+<script id="guests-template" type="text/x-handlebars-template">
+  {{#each guests}}
+    <div class = "guest" data-id='{{_id}}'>
+    <span>{{name}}</span>
+    <div class="guest-buttons">
+      <button class="rsvp-guest">V</button>
+      <button class="remove-guest">X</button>
+      <button class="add-note">+</button>
+    </div>
+    <div class="notes">
+      {{#each notes}}
+      <span>{{this}}</span>
+      {{/each}}
+    </div>
+  </div>
+    {{/each}}
 </script>
 
 

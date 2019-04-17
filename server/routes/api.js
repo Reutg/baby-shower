@@ -107,10 +107,34 @@ router.post('/baby', function (req, res) {
     res.send(selectedName)
 })
 
-// router.get('/guests', function(req, res){
-//     Guest.find()
-// })
+router.get('/guests' ,function(req,res){
+    Guest.find({}, (err,guests) => res.send(guests))
+})
 
+router.post('/guests', async function(req,res){
+    let guestName = req.body.name
+    let guest = new Guest({
+        name: guestName,
+        rsvp: false,
+        notes: []
+    })
+    await guest.save()
+    res.send(guest)
+})
 
+router.delete('/guests/:guestID', async function(req,res){
+    let guestID = req.params.guestID
+    await Guest.remove({_id: guestID}).exec()
+    res.end()
+})
+
+router.put('/guests/:guestID',async function(req,res){
+    let note = req.body.note
+    let guestID = req.params.guestID
+    let updatedGuest = await Guest.findById(guestID)
+    updatedGuest.notes.push(note)
+    await updatedGuest.save()
+    res.send(updatedGuest)
+})
 
 module.exports = router
