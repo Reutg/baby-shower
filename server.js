@@ -19,8 +19,8 @@ app.use(express.static(path.join(__dirname, 'node_modules')))
 app.use('/', api)
 
 const port = process.env.PORT || 3000
-const host = '0.0.0.0'
-app.listen(port, host, function() {
+// const host = '0.0.0.0'
+app.listen(port, function() {
     console.log("Server started.....");
   });
   // app.listen(port, function () {
