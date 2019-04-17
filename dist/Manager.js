@@ -3,21 +3,13 @@ class Manager {
         this.baby
         this.babiesList = []
         this.guests = []
+        this.date
     }
 
     async getNameSuggestions(firstLetter, popularity, gender) {
         let babies = await $.get(`/babyNames/${firstLetter}/${popularity}/${gender}`)
-        console.log(babies)
-
         let babyListNames = babies[0].map(b => { return { name: b.name } })
-        console.log(babyListNames)
-        // for (let b of babies){
-        //     this.babiesList.push(b.name)
-
-        // }
-        // console.log(this.babiesList)
         this.babiesList = babyListNames
-
     }
 
     async getBabyFromDB() {
@@ -84,4 +76,26 @@ class Manager {
         })
         this.guests[guestIndex] = updatedGuest
     }
+
+    async getDateFromDB(){
+        let date = await $.get('/date')
+        this.date = date
+    }
+
+    async saveDate(date){
+        // console.log(date)
+        await $.post(`/date/:${date}`)
+        this.date = date
+    }
+
+    async removeDate(){
+        await $.ajax({
+            method: "DELETE",
+            url: '/date'
+        })
+    }
+
+    
+
+    
 }

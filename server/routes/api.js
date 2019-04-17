@@ -1,11 +1,13 @@
 const Baby = require("../models/Baby")
 const Guest = require("../models/Guest")
+const DateOfEvent = require("../models/DateOfEvent")
+const Weather = require("../models/Weather")
 const express = require('express')
 const router = express.Router()
 const request = require('request')
 
 //use with '$$app_token' in url:
-const APIKey = 'wzY5Y2RBM2TJzY1kVPinohmeM'
+const babyAPIKey = 'wzY5Y2RBM2TJzY1kVPinohmeM'
 const APIKeySecret = 'ZzjKaTTBQzf6YWCy7NjZqx5h4Ak2Zusimbaz'
 
 let popularNames = []
@@ -136,5 +138,27 @@ router.put('/guests/:guestID',async function(req,res){
     await updatedGuest.save()
     res.send(updatedGuest)
 })
+
+//Date routes:
+router.get('/date', function(req, res){
+    DateOfEvent.find({}, (err, date) => res.send(date))
+})
+
+router.post('/date/:date', async function(req, res){
+    let dateGiven = req.params.date
+    // console.log(dateGiven)
+    let date = new DateOfEvent({
+        date: dateGiven
+    })
+
+    await date.save()
+    res.send(date)
+})
+
+router.delete('/date', async function(req, res){
+    await DateOfEvent.remove({})
+    res.end()
+})
+
 
 module.exports = router

@@ -1,16 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Baby Shower App</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="style.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="./@fortawesome/fontawesome-free/css/all.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Baby Shower App</title>
+  <link rel="stylesheet" type="text/css" media="screen" href="style.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="./@fortawesome/fontawesome-free/css/all.css">
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 </head>
+
 <body>
-<!-- baby name  -->
-<div class="babyName">
+  <!-- date -->
+  <div class='dateConainer'>
+    <p>Pick a date:</p>
+    <input type="date" class="dateInput"> <button class="saveDate">Save</button> <button
+      class="removeDate">Remove</button>
+
+    <br>
+    <br>
+  </div>
+  <!-- dateTemplate -->
+  <script id="date-template" type="text/x-handlebars-template">
+  <div class="dateSelected">
+    Date of event: {{date}}
+  </div>
+  <br>
+  <br>
+</script>
+
+
+
+  </script>
+  <!-- baby name  -->
+  <div class="babyName">
     <input type="text" placeholder="baby name" id="inputName">
     <button id="buttonSave">Save Name</button>
     <div id="savedName-container"></div>
@@ -19,23 +44,23 @@
     <p>First Latter:</p><input type="text" placeholder="First latter" id="inputFL">
     <button onclick="searchName()" id="buttonSearch">Search Name</button>
     <div id="babyList-container"></div>
-</div>
+  </div>
 
-<!-- guests list  -->
-<div class="guests-list">
-  <input type="text" placeholder="Enter guest name" id="inputGuest">
-  <button id="addGuest">Add</button>
-  <div id="guests-container"></div>
-</div>
+  <!-- guests list  -->
+  <div class="guests-list">
+    <input type="text" placeholder="Enter guest name" id="inputGuest">
+    <button id="addGuest">Add</button>
+    <div id="guests-container"></div>
+  </div>
 
-<!-- handlebars -->
+  <!-- handlebars -->
   <!-- baby name  -->
-<script id="babySelected-template" type="text/x-handlebars-template">
+  <script id="babySelected-template" type="text/x-handlebars-template">
     <div class="nameSelected">
       <div id="nameSelected">name: {{name}}</div>
     </div>
 </script>
-<script id="babyList-template" type="text/x-handlebars-template">
+  <script id="babyList-template" type="text/x-handlebars-template">
     {{#each babyNames}}
     <div class="nameList">
       <div id="babyNameList">{{name}}</div>
@@ -43,8 +68,8 @@
     {{/each}}     
 </script>
 
-<!-- guests  -->
-<script id="guests-template" type="text/x-handlebars-template">
+  <!-- guests  -->
+  <script id="guests-template" type="text/x-handlebars-template">
   {{#each guests}}
     <div class = "guest" data-id='{{_id}}'>
     <span>{{name}}</span>
@@ -62,11 +87,14 @@
     {{/each}}
 </script>
 
+<div id="chart"></div>
 
-    <script src="./handlebars/dist/handlebars.js"></script>
-    <script src="./jquery/dist/jquery.js"></script>
-    <script src="Renderer.js"></script>
-    <script src="Manager.js"></script>
-    <script src="main.js"></script>
+
+  <script src="./handlebars/dist/handlebars.js"></script>
+  <script src="./jquery/dist/jquery.js"></script>
+  <script src="Renderer.js"></script>
+  <script src="Manager.js"></script>
+  <script src="main.js"></script>
 </body>
+
 </html>
