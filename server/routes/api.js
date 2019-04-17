@@ -147,11 +147,13 @@ router.get('/tasks' ,function(req,res){
 
 router.post('/tasks', async function(req,res){
     let taskText = req.body.task
+    let costInput = req.body.cost
     let task = new Task({
         task: taskText,
         checked: false,
-        // cost: ???
+        cost: costInput
     })
+    console.log(task)
     await task.save()
     res.send(task)
 })
