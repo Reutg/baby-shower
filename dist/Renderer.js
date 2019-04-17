@@ -18,4 +18,12 @@ render(name){
     this.renderSelectedBaby(name)
 }
 
+renderGuests(guests){
+    let source = $('#guests-template').html()
+    let template = Handlebars.compile(source)
+    let newHTML = template({guests})
+    $('#guests-container').empty().append(newHTML)
+}
+
+
 }
