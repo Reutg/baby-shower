@@ -2,18 +2,60 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Baby Shower App</title>
-  <link rel="stylesheet" type="text/css" media="screen" href="style.css">
-  <link rel="stylesheet" type="text/css" media="screen" href="./@fortawesome/fontawesome-free/css/all.css">
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Baby Shower App</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="./@fortawesome/fontawesome-free/css/all.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen,projection" href="./materialize-css/dist/css/materialize.min.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 </head>
 
 <body>
-  <!-- date -->
+<!-- baby name  -->
+<div id="baby-name" class="col s12">
+        <div class="card pink lighten-2">
+            <div class="card-content">
+                <span class="card-title">Name your baby</span>
+                <div class="input-field col s6">
+                    <input placeholder="Enter baby name" id="inputName" type="text" class="validate">
+                   <button class="waves-effect waves-teal btn-flat secondary-content" id="buttonSave"><i class="far fa-save"></i></button>
+                </div>
+                     <div id="savedName-container"></div>
+                        <div class="input-field">
+                        <input placeholder="Male/Female" type="text" id="inputGender">
+                        </div>
+                        <div class="input-field">
+                        <input placeholder="most popular/least popular" type="text" class="materialize-textarea" id="inputPopular">
+                        </div>
+                        <div class="input-field">
+                        <input placeholder="first letter" type="text" id="inputFL">
+                        </div>
+                        <button class="waves-effect btn" onclick="searchName()" id="buttonSearch"><span>search for name</span></button>
+                        <div id="babyList-container"></div>
+               
+           </div>
+        </div>
+</div>
+  
+<!-- guests list  -->
+<div id="guest-list" class="col s12">
+      <div class="card indigo lighten-1">
+          <div class="card-content">
+            <span class="card-title">Guest list</span>
+               <div class="input-field">
+                <input type="text" id="inputGuest"><label for="inputGuest">Enter guest name</label>
+                </div>
+                <button class="waves-effect btn-flat right" id="addGuest"><i class="fas fa-user-plus"></i></button>
+                <div id="guests-container"></div>
+          </div>
+      </div>
+</div>
+
+    <!-- date -->
   <div class='dateConainer'>
     <p>Pick a date:</p>
     <input type="date" class="dateInput"> <button class="saveDate">Save</button> <button
@@ -22,6 +64,7 @@
     <br>
     <br>
   </div>
+  
   <!-- dateTemplate -->
   <script id="date-template" type="text/x-handlebars-template">
   <div class="dateSelected">
@@ -30,30 +73,8 @@
   <br>
   <br>
 </script>
+<!-- handlebars -->
 
-
-
-  </script>
-  <!-- baby name  -->
-  <div class="babyName">
-    <input type="text" placeholder="baby name" id="inputName">
-    <button id="buttonSave">Save Name</button>
-    <div id="savedName-container"></div>
-    <p>Gender:</p><input type="text" placeholder="Male/Female" id="inputGender">
-    <p>Popular:</p><input type="text" placeholder="most popular/least popular" id="inputPopular">
-    <p>First Latter:</p><input type="text" placeholder="First latter" id="inputFL">
-    <button onclick="searchName()" id="buttonSearch">Search Name</button>
-    <div id="babyList-container"></div>
-  </div>
-
-  <!-- guests list  -->
-  <div class="guests-list">
-    <input type="text" placeholder="Enter guest name" id="inputGuest">
-    <button id="addGuest">Add</button>
-    <div id="guests-container"></div>
-  </div>
-
-  <!-- handlebars -->
   <!-- baby name  -->
   <script id="babySelected-template" type="text/x-handlebars-template">
     <div class="nameSelected">
@@ -74,10 +95,12 @@
     <div class = "guest" data-id='{{_id}}'>
     <span>{{name}}</span>
     <div class="guest-buttons">
-      <button class="rsvp-guest">V</button>
-      <button class="remove-guest">X</button>
-      <button class="add-note">+</button>
-    </div>
+      {{#unless rsvp}}
+      <button id="rsvp-guest" class="waves-effect btn-flat"><i class="far fa-thumbs-up"></i></button>
+      {{/unless}}
+      <button id="remove-guest" class="waves-effect btn-flat"><i class="far fa-trash-alt"></i></button>
+      <button id="add-note" class="waves-effect btn-flat"><i class="far fa-comment-dots"></i></button>
+      </div>
     <div class="notes">
       {{#each notes}}
       <span>{{this}}</span>
@@ -90,11 +113,13 @@
 <div id="chart"></div>
 
 
-  <script src="./handlebars/dist/handlebars.js"></script>
-  <script src="./jquery/dist/jquery.js"></script>
-  <script src="Renderer.js"></script>
-  <script src="Manager.js"></script>
-  <script src="main.js"></script>
+    <script src="./handlebars/dist/handlebars.js"></script>
+    <script src="./jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="./materialize-css/dist/js/materialize.min.js"></script>
+    <script src="Renderer.js"></script>
+    <script src="Manager.js"></script>
+    <script src="main.js"></script>
+
 </body>
 
 </html>

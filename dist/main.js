@@ -44,24 +44,28 @@ $('#addGuest').on('click', async function () {
     renderer.renderGuests(manager.guests)
 })
 
-$('#guests-container').on('click', '.rsvp-guest', async function () {
+
+$('#guests-container').on('click','#rsvp-guest', async function(){
     let guestID = $(this).closest('.guest').data().id
     await manager.rsvpGuest(guestID)
     renderer.renderGuests(manager.guests)
 })
-$('#guests-container').on('click', '.remove-guest', async function () {
+
+$('#guests-container').on('click','#remove-guest' ,async function(){
     let guestID = $(this).closest('.guest').data().id
     await manager.removeGuest(guestID)
     renderer.renderGuests(manager.guests)
 })
 
-$('#guests-container').on('click', '.add-note', async function () {
+
+$('#guests-container').on('click','#add-note' , async function(){
     let guestID = $(this).closest('.guest').data().id
-    $(`[data-id='${guestID}']`).append('<input class="note-input"><button id="save-noteInput">save</button>')
+    $(`[data-id='${guestID}']`).append('<input class="note-input"><button id="save-noteInput" class="waves-effect btn-flat"><i class="far fa-save"></i></button>')
 })
 
 
-$('#guests-container').on('click', '#save-noteInput', async function () {
+
+$('#guests-container').on('click', '#save-noteInput', async function(){
     let noteInput = $(this).closest('.guest').find('.note-input').val()
     let guestID = $(this).closest('.guest').data().id
     await manager.saveNote(noteInput, guestID)

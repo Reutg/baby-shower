@@ -32,6 +32,4 @@ renderDate(date){
     $('.dateConainer').empty().append(newHTML)
 }
 
-
-
 }

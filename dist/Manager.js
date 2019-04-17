@@ -62,12 +62,11 @@ class Manager {
             url: `guests/${guestID}/rsvp`,
             data: {rsvp: true}
         })
-        this.guests[guestIndex] = updatedGuest
+        this.guests[guestIndex] = upatedGuest
         
     }
 
     async saveNote(note,guestID){
-        debugger
         let guestIndex = this.guests.findIndex(guest => guest._id == guestID)
         let updatedGuest = await $.ajax({
             type: "PUT",
