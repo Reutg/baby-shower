@@ -80,7 +80,9 @@ $('#guests-container').on('click', '#save-noteInput', async function(){
 
 $('#addTask').on('click', async function(){
     let taskInput = $('#inputTask').val()
-    await manager.saveTasks(taskInput)
+    let costInput= $('#inputCost').val()
+    console.log(costInput)
+    await manager.saveTasks(taskInput,costInput)
     renderer.renderTasks(manager.tasks)
 })
 

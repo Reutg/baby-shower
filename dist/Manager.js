@@ -63,7 +63,7 @@ class Manager {
             url: `guests/${guestID}/rsvp`,
             data: {rsvp: true}
         })
-        this.guests[guestIndex] = upatedGuest
+        this.guests[guestIndex] = updatedGuest 
         
     }
 
@@ -80,8 +80,9 @@ class Manager {
         let tasks = await $.get('/tasks')
         this.tasks = tasks
     }
-    async saveTasks(newTask){
-        let savedTask = await $.post('/tasks', {task: newTask})
+    async saveTasks(newTask,cost){
+        // console.log(cost)
+        let savedTask = await $.post('/tasks', {task: newTask, cost: cost})
         this.tasks.push(savedTask)
     }
     async removeTask(idTask){

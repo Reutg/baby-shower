@@ -58,6 +58,7 @@
 <!-- to do list -->
 <div class="todo-list">
   <input type="text" placeholder="Enter a new task" id="inputTask">
+  <input type="number" placeholder="$$$" id="inputCost">
   <button id="addTask">Add Task</button>
   <div id="task-container"></div>
 </div>
@@ -121,7 +122,8 @@
 <script id="todolist-template" type="text/x-handlebars-template">
   {{#each tasks}}
     <div class = "task" data-id='{{_id}}'>
-    <span>{{task}}</span>
+    <span>{{task}} </span>
+    <span> cost:{{cost}}$</span>
     <div class="task-buttons">
       <button class="checked-task">V</button>
       <button class="remove-task">X</button>
