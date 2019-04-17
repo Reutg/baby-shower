@@ -3,6 +3,7 @@ class Manager {
         this.baby
         this.babiesList = []
         this.guests = []
+        this.tasks=[]
         this.date
     }
 
@@ -57,7 +58,7 @@ class Manager {
 
     async rsvpGuest(guestID){
         let guestIndex = this.guests.findIndex(guest => guest._id == guestID)
-        let upatedGuest = await $.ajax({
+        let updatedGuest = await $.ajax({
             type: "PUT",
             url: `guests/${guestID}/rsvp`,
             data: {rsvp: true}
@@ -75,6 +76,42 @@ class Manager {
         })
         this.guests[guestIndex] = updatedGuest
     }
+    async getTasksFromDB(){
+        let tasks = await $.get('/tasks')
+        this.tasks = tasks
+    }
+    async saveTasks(newTask){
+        let savedTask = await $.post('/tasks', {task: newTask})
+        this.tasks.push(savedTask)
+    }
+    async removeTask(idTask){
+        await $.ajax({
+            method: "DELETE",
+            url: `/tasks/${idTask}`
+        })
+    this.tasks = this.tasks.filter(task => task._id != idTask)
+    }
+
+    async checkedTask(taskID){
+        let taskIndex = this.tasks.findIndex(task => task._id == taskID)
+        let updatedTask = await $.ajax({
+            type: "PUT",
+            url: `tasks/${taskID}/checked`,
+            data: {checked: true}
+        })
+        this.tasks[taskIndex] = updatedTask    
+    }
+
+    // async saveCost(cost,taskID){
+    //     debugger
+    //     let taskIndex = this.tasks.findIndex(task => task._idTask == TaskID)
+    //     let updatedCost = await $.ajax({
+    //         type: "PUT",
+    //         url: `/tasks/${taskID}`,
+    //         data: {cost}
+    //     })
+    //     this.tasks[taskIndex] = updatedCost
+    // }
 
     async getDateFromDB(){
         let date = await $.get('/date')

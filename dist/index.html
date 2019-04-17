@@ -55,6 +55,13 @@
       </div>
 </div>
 
+<!-- to do list -->
+<div class="todo-list">
+  <input type="text" placeholder="Enter a new task" id="inputTask">
+  <button id="addTask">Add Task</button>
+  <div id="task-container"></div>
+</div>
+
     <!-- date -->
   <div class='dateConainer'>
     <p>Pick a date:</p>
@@ -110,6 +117,19 @@
     {{/each}}
 </script>
 
+<!-- todo list -->
+<script id="todolist-template" type="text/x-handlebars-template">
+  {{#each tasks}}
+    <div class = "task" data-id='{{_id}}'>
+    <span>{{task}}</span>
+    <div class="task-buttons">
+      <button class="checked-task">V</button>
+      <button class="remove-task">X</button>
+      <!-- <div id="cost-task">{{this}}</div> -->
+    </div>
+  </div>
+    {{/each}}
+</script>
 <div id="chart"></div>
 
 

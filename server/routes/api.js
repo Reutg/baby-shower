@@ -1,5 +1,6 @@
 const Baby = require("../models/Baby")
 const Guest = require("../models/Guest")
+const Task= require("../models/Task")
 const DateOfEvent = require("../models/DateOfEvent")
 const Weather = require("../models/Weather")
 const express = require('express')
@@ -137,6 +138,38 @@ router.put('/guests/:guestID',async function(req,res){
     updatedGuest.notes.push(note)
     await updatedGuest.save()
     res.send(updatedGuest)
+})
+
+
+router.get('/tasks' ,function(req,res){
+    Task.find({}, (err,tasks) => res.send(tasks))
+})
+
+router.post('/tasks', async function(req,res){
+    let taskText = req.body.task
+    let task = new Task({
+        task: taskText,
+        checked: false,
+        // cost: ???
+    })
+    await task.save()
+    res.send(task)
+})
+
+router.delete('/tasks/:taskID', async function(req,res){
+    let taskID = req.params.taskID
+    await Task.remove({_id: taskID}).exec()
+    res.end()
+})
+
+router.put('/tasks/:taskID/checked',async function(req,res){
+    // let cost = req.body.cost
+    let taskID = req.params.taskID
+    let updatedTask = await Task.findById(taskID)
+    updatedTask.checked=true
+    // updatedTask.cost.push(cost)
+    await updatedTask.save()
+    res.send(updatedTask)
 })
 
 router.put('/guests/:guestID/rsvp',async function(req,res){

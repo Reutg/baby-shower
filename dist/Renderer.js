@@ -25,6 +25,11 @@ renderGuests(guests){
     $('#guests-container').empty().append(newHTML)
 }
 
+renderTasks(tasks){
+    let source = $('#todolist-template').html()
+    let template = Handlebars.compile(source)
+    let newHTML = template({tasks})
+    $('#task-container').empty().append(newHTML)
 renderDate(date){
     let source = $('#date-template').html()
     let template = Handlebars.compile(source)
