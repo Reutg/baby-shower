@@ -25,5 +25,4 @@ renderGuests(guests){
     $('#guests-container').empty().append(newHTML)
 }
 
-
 }

@@ -137,4 +137,12 @@ router.put('/guests/:guestID',async function(req,res){
     res.send(updatedGuest)
 })
 
+router.put('/guests/:guestID/rsvp',async function(req,res){
+    let guestID = req.params.guestID
+    let updatedGuest = await Guest.findById(guestID)
+    updatedGuest.rsvp = true
+    await updatedGuest.save()
+    res.send(updatedGuest)
+})
+
 module.exports = router

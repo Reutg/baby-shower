@@ -1,0 +1,19 @@
+body{
+    background-color: #fafafa;
+    display: grid;
+    grid-template-areas: 
+    "n n n n"
+    ". d d ."
+    "b b g g"
+    "b b g g"
+    ;
+}
+
+#baby-name{
+grid-area: b;
+}
+
+#guest-list{
+grid-area: g;
+
+}
