@@ -76,5 +76,36 @@ $('.saveDate').on('click', async function () {
     renderer.renderDate(manager.date)
 })
 
+function drawChart() {
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Race');
+    data.addColumn('number', 'Percent');
+    data.addRows(4);
+    data.setValue(0, 0, 'Black, non-Hispanic');
+    data.setValue(0, 1, 1370);
+    data.setValue(1, 0, 'Hispanic');
+    data.setValue(1, 1, 40);
+    data.setValue(2, 0, 'White, non-Hispanic');
+    data.setValue(2, 1, 537);
+    data.setValue(3, 0, 'Suppressed Categories');
+    data.setValue(3, 1, 0);
+
+    var chart = new google.visualization.PieChart(document.getElementById('chart'));
+    chart.draw(data, {
+        width: 650,
+        height: 500,
+        fontSize: 11,
+        chartArea:{
+            top:20,
+            left:100
+        },
+        colors:['8d2300','FE9929','D95F0E','000000'],
+        sliceVisibilityThreshold: 0
+    });
+  }      
+
+google.load('visualization', '1', {packages: ['corechart']});
+google.setOnLoadCallback(drawChart);
+
 loadPage()
 loadGuests()
