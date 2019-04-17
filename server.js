@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const api = require('./server/routes/api')
 const app = express()
+const moment = require('moment')
 
 mongoose.connect('mongodb://localhost/BabyDB', {useNewUrlParser: true})
 

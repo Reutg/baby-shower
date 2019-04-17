@@ -25,5 +25,13 @@ renderGuests(guests){
     $('#guests-container').empty().append(newHTML)
 }
 
+renderDate(date){
+    let source = $('#date-template').html()
+    let template = Handlebars.compile(source)
+    let newHTML = template({date: date})
+    $('.dateConainer').empty().append(newHTML)
+}
+
+
 
 }

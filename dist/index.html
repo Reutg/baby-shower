@@ -9,6 +9,25 @@
     <link rel="stylesheet" type="text/css" media="screen" href="./@fortawesome/fontawesome-free/css/all.css">
 </head>
 <body>
+<!-- date -->
+<div class='dateConainer'>
+  <p>Pick a date:</p>
+  <input type="date" class="dateInput"> <button class="saveDate">Save</button> <button class="removeDate">Remove</button>
+
+  <br>
+  <br>
+</div>
+<!-- dateTemplate -->
+<script id="date-template" type="text/x-handlebars-template">
+  <div class="dateSelected">
+    Date of event: {{date}}
+  </div>
+  <br>
+  <br>
+</script>
+
+
+
 <!-- baby name  -->
 <div class="babyName">
     <input type="text" placeholder="baby name" id="inputName">

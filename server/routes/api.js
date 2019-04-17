@@ -1,8 +1,11 @@
 const Baby = require("../models/Baby")
 const Guest = require("../models/Guest")
+const DateOfEvent = require("../models/DateOfEvent")
 const express = require('express')
 const router = express.Router()
 const request = require('request')
+const moment = require('moment')
+
 
 //use with '$$app_token' in url:
 const APIKey = 'wzY5Y2RBM2TJzY1kVPinohmeM'
@@ -135,6 +138,26 @@ router.put('/guests/:guestID',async function(req,res){
     updatedGuest.notes.push(note)
     await updatedGuest.save()
     res.send(updatedGuest)
+})
+
+router.get('/date', function(req, res){
+    DateOfEvent.find({}, (err, date) => res.send(date))
+})
+
+router.post('/date/:date', async function(req, res){
+    let dateGiven = req.params.date
+    // console.log(dateGiven)
+    let date = new DateOfEvent({
+        date: dateGiven
+    })
+
+    await date.save()
+    res.send(date)
+})
+
+router.delete('/date', async function(req, res){
+    await DateOfEvent.remove({})
+    res.end()
 })
 
 module.exports = router
