@@ -5,6 +5,8 @@ class Manager {
         this.guests = []
         this.tasks=[]
         this.date
+        this.budget
+        this.costsum
     }
 
     async getNameSuggestions(firstLetter, popularity, gender) {
@@ -79,6 +81,8 @@ class Manager {
     async getTasksFromDB(){
         let tasks = await $.get('/tasks')
         this.tasks = tasks
+        console.log(tasks)
+        // this.costsum = tasks.cost
     }
     async saveTasks(newTask,cost){
         // console.log(cost)
@@ -103,16 +107,15 @@ class Manager {
         this.tasks[taskIndex] = updatedTask    
     }
 
-    // async saveCost(cost,taskID){
-    //     debugger
-    //     let taskIndex = this.tasks.findIndex(task => task._idTask == TaskID)
-    //     let updatedCost = await $.ajax({
-    //         type: "PUT",
-    //         url: `/tasks/${taskID}`,
-    //         data: {cost}
-    //     })
-    //     this.tasks[taskIndex] = updatedCost
-    // }
+    async getBudget(){
+        let savedBudget = await $.get('/budget')
+        this.budget = savedBudget
+    }
+
+    async saveBudget(budgetValue){
+        let savedBudget = await $.post('/budget', {budget: budgetValue})
+        this.budget = savedBudget
+    }
 
     async getDateFromDB(){
         let date = await $.get('/date')
