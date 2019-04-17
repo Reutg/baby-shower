@@ -20,7 +20,7 @@ app.use('/', api)
 
 const port = process.env.PORT || 3000
 const host = '0.0.0.0'
-app.listen(port, function() {
+app.listen(port, host, function() {
     console.log("Server started.....");
   });
   // app.listen(port, function () {
