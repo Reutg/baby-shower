@@ -30,6 +30,7 @@ renderTasks(tasks){
     let template = Handlebars.compile(source)
     let newHTML = template({tasks})
     $('#task-container').empty().append(newHTML)
+}
 renderDate(date){
     let source = $('#date-template').html()
     let template = Handlebars.compile(source)

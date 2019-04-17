@@ -14,10 +14,10 @@ const APIKeySecret = 'ZzjKaTTBQzf6YWCy7NjZqx5h4Ak2Zusimbaz'
 let popularNames = []
 let unPopularNames = []
 
-router.get('/', function (req, res) {
-    console.log('SOMEONE IS HERE')
-    res.end()
-})
+// router.get('/', function (req, res) {
+//     console.log('SOMEONE IS HERE')
+//     res.end()
+// })
 
 router.get('/babyNames/:firstLetter/:popularity/:gender', function (req, res) {
     let firstLetter = req.params.firstLetter
