@@ -6,7 +6,8 @@ const api = require('./server/routes/api')
 const app = express()
 
 // mongoose.connect('mongodb://localhost/BabyDB', {useNewUrlParser: true})
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/BabyDB', { useNewUrlParser: true }, (err) => {
+const CONNECTION_STRING = 'mongodb://babyShowerUser:12312323zz@ds143666.mlab.com:43666/heroku_fppmgbth'
+mongoose.connect(process.env.CONNECTION_STRING || 'mongodb://localhost/BabyDB', { useNewUrlParser: true }, (err) => {
     console.log(`DB connected`);
 })
 
