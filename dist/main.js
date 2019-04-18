@@ -71,7 +71,7 @@ $('#guests-container').on('click','#remove-guest' ,async function(){
 
 $('#guests-container').on('click','#add-note' , async function(){
     let guestID = $(this).closest('.guest').data().id
-    $(`[data-id='${guestID}']`).find('.notes').append('<input class="note-input"><button id="save-noteInput" class="waves-effect btn-flat"><i class="far fa-save"></i></button>')
+    $(`[data-id='${guestID}']`).find('.notes').append('<div class="row"><input class="col s10 note-input"><button id="save-noteInput" class="col s2 waves-effect btn-flat"><i class="far fa-save"></i></button></div>')
 })
 
 

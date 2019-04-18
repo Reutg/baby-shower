@@ -51,12 +51,12 @@ class Manager {
         this.guests = this.guests.filter(guest => guest._id != id)
     }
 
-    //todo: change the route to ajax and change the route name to be different than the saveNote route
-    async rsvpGuest(guestID){
-        let guestIndex = this.guests.findIndex(guest => guest._id == guestID)
-        await $.put('/guests', this.guests[guestIndex])
-        this.guests[guestIndex].rsvp = true
-    }
+    // //todo: change the route to ajax and change the route name to be different than the saveNote route
+    // async rsvpGuest(guestID){
+    //     let guestIndex = this.guests.findIndex(guest => guest._id == guestID)
+    //     await $.put('/guests', this.guests[guestIndex])
+    //     this.guests[guestIndex].rsvp = true
+    // }
 
     async rsvpGuest(guestID){
         let guestIndex = this.guests.findIndex(guest => guest._id == guestID)
@@ -66,7 +66,6 @@ class Manager {
             data: {rsvp: true}
         })
         this.guests[guestIndex] = updatedGuest 
-        
     }
 
     async saveNote(note,guestID){
@@ -82,10 +81,8 @@ class Manager {
         let tasks = await $.get('/tasks')
         this.tasks = tasks
         console.log(tasks)
-        // this.costsum = tasks.cost
     }
     async saveTasks(newTask,cost){
-        // console.log(cost)
         let savedTask = await $.post('/tasks', {task: newTask, cost: cost})
         this.tasks.push(savedTask)
     }
@@ -123,7 +120,6 @@ class Manager {
     }
 
     async saveDate(date){
-        // console.log(date)
         await $.post(`/date/:${date}`)
         this.date = date
     }

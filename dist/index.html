@@ -8,6 +8,7 @@
     <title>Baby Shower App</title>
     <link rel="stylesheet" type="text/css" media="screen" href="./@fortawesome/fontawesome-free/css/all.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Acme|Comfortaa|Courgette|Fredoka+One|Kaushan+Script|Lobster|Luckiest+Guy|Pacifico|Permanent+Marker|Righteous" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen,projection" href="./materialize-css/dist/css/materialize.min.css">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -15,11 +16,22 @@
 </head>
 
 <body>
-<!-- baby name  -->
+    <div class="header card">
+        <div class="card-content center">
+          </br>
+        </br>
+      </br>
+
+            <h4>My Baby Shower</h4>
+        </br>
+      </br>
+        </div>
+      </div>
+            <!-- baby name  -->
       <div id="baby-name">
-          <div class="card grey lighten-5">
+          <div class="card pink lighten-5">
               <div class="card-content center">
-                  <span class="card-title purple-text">Name your baby</span>
+                  <span class="card-title">Name your baby</span>
                   <div class="row">
                     <div class="input-field col 8">
                        <input placeholder="Enter baby name" id="inputName" type="text" class="validate">
@@ -29,6 +41,7 @@
                   </div>  
                   </div>
                       <div id="savedName-container"></div>
+                      <h6 class="left">Feeling lost? you can generate names:</h6>
                           <div class="input-field">
                           <input placeholder="Male/Female" type="text" id="inputGender">
                           </div>
@@ -46,9 +59,9 @@
 
 <!-- date -->
 <div id='dateConainer'>
-    <div class="card grey lighten-5">
+    <div class="card pink lighten-4">
         <div class="card-content center">
-            <span class="card-title pink-text">Pick a date</span>
+            <span class="card-title">Pick a date</span>
             <p>Pick a date:</p>
             <div class="row">
               <input type="date" id="date-input" class="datepicker col s10">
@@ -64,9 +77,9 @@
   
 <!-- guests list  -->
 <div id="guest-list">
-      <div class="card grey lighten-5">
+      <div class="card pink lighten-3">
           <div class="card-content">
-            <div class="card-title green-text center">Guest list</div>
+            <div class="card-title center">Guest list</div>
             <div class="row">
               <div class="input-field col 8">
                <input type="text" placeholder="Guest name" id="inputGuest">
@@ -80,11 +93,11 @@
 
 <!-- to-do list -->
 <div id="todo-list">
-    <div class="card grey lighten-5">
+    <div class="card pink lighten-2">
         <div class="card-content">
-            <span class="card-title light-blue-text center">To-Do</span>
+            <span class="card-title center">To-Do</span>
                 <div id="budget" class="center">
-                  <p class="light-blue-text">My budget:</p>  
+                  <p>My budget:</p>  
                   <div id="budget-container"></div>
                   <div class="row">
                     <input type="number" placeholder="$$$" id="budgetInput" class="col s10">
@@ -93,8 +106,8 @@
                   </div>
                 </div>
                 <div class="row">
-                  <input type="text" class="col s5" placeholder="Enter a new task" id="inputTask">
-                  <input type="number" class="col s5" placeholder="Task cost" id="inputCost">
+                  <input type="text" class="col s4" placeholder="Enter a new task" id="inputTask">
+                  <input type="number" class="col s4" placeholder="Task cost" id="inputCost">
                   <button id="addTask" class="waves-effect btn-flat col s2"><i class="fas fa-plus-circle"></i></button>
                 </div>
                 <div id="task-container"></div>
@@ -119,7 +132,7 @@
   <script id="babySelected-template" type="text/x-handlebars-template">
     <div class="nameSelected">
     {{#if name}}
-      <div id="nameSelected" class="purple-text">My baby's name is: <h5>{{name}}</h5></div>
+      <div id="nameSelected">My baby's name is: <h5>{{name}}</h5></div>
     {{/if}}  
     </div>
 </script>
@@ -136,7 +149,7 @@
   {{#each guests}}
     <div class ="guest" data-id='{{_id}}'>
       <div class="row">
-        <span class="guest-name col s4 green-text text-bold">{{name}}</span>
+        <span class="guest-name col s4 text-bold">{{name}}</span>
         <div class="guest-buttons col s8">
           <button id="remove-guest" class="waves-effect btn-flat"><i class="far fa-trash-alt"></i></button>
           <button id="add-note" class="waves-effect btn-flat"><i class="far fa-comment-dots"></i></button>
@@ -150,7 +163,7 @@
       <div class="notes">
         {{#each notes}}
         <div class="note row">
-          <div class="note-box col s2 center">{{this}}</div>
+            <span class="new badge col s2 grey" data-badge-caption="">{{this}}</span>
           {{/each}}
         </div>
       </div>
@@ -172,11 +185,11 @@
     <div class = "task" data-id='{{_id}}'>
       <div class="row">
           {{#if checked}}
-          <button class="checked-task waves-effect btn-flat col s1"><i class="far fa-check-square"></i></button>
+          <button class="checked-task waves-effect btn-flat col s2"><i class="far fa-check-square"></i></button>
           {{else}}
-          <button class="checked-task waves-effect btn-flat col s1"><i class="far fa-square"></i></button>
+          <button class="checked-task waves-effect btn-flat col s2"><i class="far fa-square"></i></button>
           {{/if}}
-        <span class="light-blue-text col s5">{{task}} </span>
+        <span class="col s5">{{task}} </span>
         <span class="col s3"> cost: {{cost}}$</span>
         <div class="task-buttons col s2">
 

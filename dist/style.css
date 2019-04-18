@@ -32,3 +32,13 @@ body{
 #budget{
     margin-bottom: 30px;
 }
+
+.header{
+    background: url(695982ef08230d8.png) no-repeat center center fixed;
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
+
+   font-family: 'Fredoka One';
+   }
