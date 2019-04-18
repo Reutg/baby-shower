@@ -1,19 +1,44 @@
 body{
     background-color: #fafafa;
-    display: grid;
-    grid-template-areas: 
-    "n n n n"
-    ". d d ."
-    "b b g g"
-    "b b g g"
-    ;
 }
 
-#baby-name{
-grid-area: b;
+.card{
+    margin: 1%;
 }
 
-#guest-list{
-grid-area: g;
-
+.save-button{
+    margin-bottom: 0;
+    margin-top: 1.7em;
 }
+
+#addGuest{
+    margin-bottom: 0;
+    margin-top: 1.7em;
+}
+
+.row{
+    margin-bottom: 0; 
+}
+
+.note-box{
+    background-color: rgba(51, 170, 51, .1) ;
+    border-radius: 5px;
+}
+
+.date-buttons > .btn-flat{
+    padding: 4px;
+}
+
+#budget{
+    margin-bottom: 30px;
+}
+
+.header{
+    background: url(695982ef08230d8.png) no-repeat center center fixed;
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
+
+   font-family: 'Fredoka One';
+   }

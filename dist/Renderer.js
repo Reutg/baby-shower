@@ -35,6 +35,13 @@ renderDate(date){
     let source = $('#date-template').html()
     let template = Handlebars.compile(source)
     let newHTML = template({date: date})
-    $('.dateConainer').empty().append(newHTML)
+    $('#dateConainer').empty().append(newHTML)
+}
+
+renderBudget(budget){
+    let source = $('#budget-template').html()
+    let template = Handlebars.compile(source)
+    let newHTML = template({budget: budget[0].budget})
+    $('#budget-container').empty().append(newHTML)
 }
 }

@@ -1,6 +1,7 @@
 const Baby = require("../models/Baby")
 const Guest = require("../models/Guest")
 const Task= require("../models/Task")
+const Budget = require("../models/Budget")
 const DateOfEvent = require("../models/DateOfEvent")
 const Weather = require("../models/Weather")
 const express = require('express')
@@ -172,6 +173,20 @@ router.put('/tasks/:taskID/checked',async function(req,res){
     // updatedTask.cost.push(cost)
     await updatedTask.save()
     res.send(updatedTask)
+})
+
+router.get('/budget', async function(req,res){
+    Budget.find({}, (err,budget) => res.send(budget))
+})
+
+router.post('/budget', async (req,res)=>{
+    let budgetValue = req.body.budget
+    let budget = new Budget({
+        budget: budgetValue
+    })
+
+    await budget.save()
+    res.send(budget)
 })
 
 router.put('/guests/:guestID/rsvp',async function(req,res){

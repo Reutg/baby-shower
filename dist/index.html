@@ -6,87 +6,134 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Baby Shower App</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="style.css">
     <link rel="stylesheet" type="text/css" media="screen" href="./@fortawesome/fontawesome-free/css/all.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Acme|Comfortaa|Courgette|Fredoka+One|Kaushan+Script|Lobster|Luckiest+Guy|Pacifico|Permanent+Marker|Righteous" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen,projection" href="./materialize-css/dist/css/materialize.min.css">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css">
 </head>
 
 <body>
-<!-- baby name  -->
-<div id="baby-name" class="col s12">
-        <div class="card pink lighten-2">
-            <div class="card-content">
-                <span class="card-title">Name your baby</span>
-                <div class="input-field col s6">
-                    <input placeholder="Enter baby name" id="inputName" type="text" class="validate">
-                   <button class="waves-effect waves-teal btn-flat secondary-content" id="buttonSave"><i class="far fa-save"></i></button>
-                </div>
-                     <div id="savedName-container"></div>
-                        <div class="input-field">
-                        <input placeholder="Male/Female" type="text" id="inputGender">
-                        </div>
-                        <div class="input-field">
-                        <input placeholder="most popular/least popular" type="text" class="materialize-textarea" id="inputPopular">
-                        </div>
-                        <div class="input-field">
-                        <input placeholder="first letter" type="text" id="inputFL">
-                        </div>
-                        <button class="waves-effect btn" onclick="searchName()" id="buttonSearch"><span>search for name</span></button>
-                        <div id="babyList-container"></div>
-               
-           </div>
+    <div class="header card">
+        <div class="card-content center">
+          </br>
+        </br>
+      </br>
+
+            <h4>My Baby Shower</h4>
+        </br>
+      </br>
         </div>
-</div>
+      </div>
+            <!-- baby name  -->
+      <div id="baby-name">
+          <div class="card pink lighten-5">
+              <div class="card-content center">
+                  <span class="card-title">Name your baby</span>
+                  <div class="row">
+                    <div class="input-field col 8">
+                       <input placeholder="Enter baby name" id="inputName" type="text" class="validate">
+                   </div>
+                   <div class="save-button input-field col 4">
+                   <a class="deep-purple lighten-2 btn btn-small" id="buttonSave">save</a>
+                  </div>  
+                  </div>
+                      <div id="savedName-container"></div>
+                      <h6 class="left">Feeling lost? you can generate names:</h6>
+                          <div class="input-field">
+                          <input placeholder="Male/Female" type="text" id="inputGender">
+                          </div>
+                          <div class="input-field">
+                          <input placeholder="most popular/least popular" type="text" class="materialize-textarea" id="inputPopular">
+                          </div>
+                          <div class="input-field">
+                          <input placeholder="first letter" type="text" id="inputFL">
+                          </div>
+                          <button class="deep-purple lighten-2 btn btn" onclick="searchName()" id="buttonSearch"><span>search for name</span></button>
+                          <div id="babyList-container"></div>
+              </div>
+          </div>        
+      </div>
+
+<!-- date -->
+<div id='dateConainer'>
+    <div class="card pink lighten-4">
+        <div class="card-content center">
+            <span class="card-title">Pick a date</span>
+            <p>Pick a date:</p>
+            <div class="row">
+              <input type="date" id="date-input" class="datepicker col s10">
+              <div class="date-buttons col s2">
+              <button class="saveDate waves-effect btn-flat"><i class="far fa-check-circle"></i></button> 
+              <button class="removeDate waves-effect btn-flat"><i class="far fa-trash-alt"></i></button>
+            </div>
+            </div>  
+        </div>
+    </div>
+  </div>
+  
   
 <!-- guests list  -->
-<div id="guest-list" class="col s12">
-      <div class="card indigo lighten-1">
+<div id="guest-list">
+      <div class="card pink lighten-3">
           <div class="card-content">
-            <span class="card-title">Guest list</span>
-               <div class="input-field">
-                <input type="text" id="inputGuest"><label for="inputGuest">Enter guest name</label>
-                </div>
-                <button class="waves-effect btn-flat right" id="addGuest"><i class="fas fa-user-plus"></i></button>
+            <div class="card-title center">Guest list</div>
+            <div class="row">
+              <div class="input-field col 8">
+               <input type="text" placeholder="Guest name" id="inputGuest">
+               </div>
+               <button class="waves-effect btn-flat col 4" id="addGuest"><i class="fas fa-user-plus"></i></button>
+            </div>
                 <div id="guests-container"></div>
           </div>
       </div>
 </div>
 
-<!-- to do list -->
-<div class="todo-list">
-  <input type="text" placeholder="Enter a new task" id="inputTask">
-  <input type="number" placeholder="$$$" id="inputCost">
-  <button id="addTask">Add Task</button>
-  <div id="task-container"></div>
+<!-- to-do list -->
+<div id="todo-list">
+    <div class="card pink lighten-2">
+        <div class="card-content">
+            <span class="card-title center">To-Do</span>
+                <div id="budget" class="center">
+                  <p>My budget:</p>  
+                  <div id="budget-container"></div>
+                  <div class="row">
+                    <input type="number" placeholder="$$$" id="budgetInput" class="col s10">
+                    <button id="save-budget" class="waves-effect btn-flat col s2"><i class="far fa-check-circle"></i></button>
+
+                  </div>
+                </div>
+                <div class="row">
+                  <input type="text" class="col s4" placeholder="Enter a new task" id="inputTask">
+                  <input type="number" class="col s4" placeholder="Task cost" id="inputCost">
+                  <button id="addTask" class="waves-effect btn-flat col s2"><i class="fas fa-plus-circle"></i></button>
+                </div>
+                <div id="task-container"></div>
+        </div>
+      </div>
+    </div>
 </div>
 
-    <!-- date -->
-  <div class='dateConainer'>
-    <p>Pick a date:</p>
-    <input type="date" class="dateInput"> <button class="saveDate">Save</button> <button
-      class="removeDate">Remove</button>
 
-    <br>
-    <br>
-  </div>
-  
   <!-- dateTemplate -->
   <script id="date-template" type="text/x-handlebars-template">
-  <div class="dateSelected">
-    Date of event: {{date}}
+  <div class="dateSelected red lighten-5">
+      <div class="card-content">
+          <span class="card-title">Baby shower date</span>
+             Event Date: {{date}}
+      </div>
   </div>
-  <br>
-  <br>
 </script>
 <!-- handlebars -->
 
   <!-- baby name  -->
   <script id="babySelected-template" type="text/x-handlebars-template">
     <div class="nameSelected">
-      <div id="nameSelected">name: {{name}}</div>
+    {{#if name}}
+      <div id="nameSelected">My baby's name is: <h5>{{name}}</h5></div>
+    {{/if}}  
     </div>
 </script>
   <script id="babyList-template" type="text/x-handlebars-template">
@@ -100,34 +147,55 @@
   <!-- guests  -->
   <script id="guests-template" type="text/x-handlebars-template">
   {{#each guests}}
-    <div class = "guest" data-id='{{_id}}'>
-    <span>{{name}}</span>
-    <div class="guest-buttons">
-      {{#unless rsvp}}
-      <button id="rsvp-guest" class="waves-effect btn-flat"><i class="far fa-thumbs-up"></i></button>
-      {{/unless}}
-      <button id="remove-guest" class="waves-effect btn-flat"><i class="far fa-trash-alt"></i></button>
-      <button id="add-note" class="waves-effect btn-flat"><i class="far fa-comment-dots"></i></button>
+    <div class ="guest" data-id='{{_id}}'>
+      <div class="row">
+        <span class="guest-name col s4 text-bold">{{name}}</span>
+        <div class="guest-buttons col s8">
+          <button id="remove-guest" class="waves-effect btn-flat"><i class="far fa-trash-alt"></i></button>
+          <button id="add-note" class="waves-effect btn-flat"><i class="far fa-comment-dots"></i></button>
+          {{#if rsvp}}      
+            <span class="coming">coming!</span >
+          {{else}}
+          <button id="rsvp-guest" class="waves-effect btn-flat">rsvp</i></button>
+          {{/if}}
+        </div>
       </div>
-    <div class="notes">
-      {{#each notes}}
-      <span>{{this}}</span>
-      {{/each}}
-    </div>
+      <div class="notes">
+        {{#each notes}}
+        <div class="note row">
+            <span class="new badge col s2 grey" data-badge-caption="">{{this}}</span>
+          {{/each}}
+        </div>
+      </div>
   </div>
     {{/each}}
 </script>
 
 <!-- todo list -->
+<script id="budget-template" type="text/x-handlebars-template">
+<div id="budget-value">
+  <span>
+      {{budget}} &#x24;
+  </span>
+</div>
+
+</script>
 <script id="todolist-template" type="text/x-handlebars-template">
   {{#each tasks}}
     <div class = "task" data-id='{{_id}}'>
-    <span>{{task}} </span>
-    <span> cost:{{cost}}$</span>
-    <div class="task-buttons">
-      <button class="checked-task">V</button>
-      <button class="remove-task">X</button>
-      <!-- <div id="cost-task">{{this}}</div> -->
+      <div class="row">
+          {{#if checked}}
+          <button class="checked-task waves-effect btn-flat col s2"><i class="far fa-check-square"></i></button>
+          {{else}}
+          <button class="checked-task waves-effect btn-flat col s2"><i class="far fa-square"></i></button>
+          {{/if}}
+        <span class="col s5">{{task}} </span>
+        <span class="col s3"> cost: {{cost}}$</span>
+        <div class="task-buttons col s2">
+
+          
+          <button class="remove-task waves-effect btn-flat"><i class="far fa-trash-alt"></i></button>
+      </div>
     </div>
   </div>
     {{/each}}
